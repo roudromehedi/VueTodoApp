@@ -32,39 +32,43 @@
   </form>
 
   <div v-if="filteredBacklog.length">
-    <div
-      v-for="(todo, index) in filteredBacklog"
-      :key="index"
-      class="mb-2 flex justify-between"
-    >
-      <span class="flex items-center rounded cursor-pointer hover:bg-gray-100">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
-          class="w-5 h-5 text-[#AAAAAA]"
-          viewBox="0 0 16 16"
-        >
-          <path
-            d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
-          />
-        </svg>
-
-        <span>
-          <span class="ml-4 text-[15px]">{{ todo.text }}</span>
-          <p class="text-[10px] text-gray-500 px-4">
-            {{ formatDate(todo.created_at) }}
-          </p>
-        </span>
-      </span>
-
-      <button
-        @click="() => handleMoveToList(todo)"
-        class="h-8 px-2 text-[15px] text-center text-[#0080FF] ring-1 ring-[#AAAAAA] bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-        type="button"
+    <transition-group name="list" tag="ul">
+      <div
+        v-for="(todo, index) in filteredBacklog"
+        :key="index"
+        class="mb-2 flex justify-between"
       >
-        Move to List
-      </button>
-    </div>
+        <span
+          class="flex items-center rounded cursor-pointer hover:bg-gray-100"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            class="w-5 h-5 text-[#AAAAAA]"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+            />
+          </svg>
+
+          <span>
+            <span class="ml-4 text-[15px]">{{ todo.text }}</span>
+            <p class="text-[10px] text-gray-500 px-4">
+              {{ formatDate(todo.created_at) }}
+            </p>
+          </span>
+        </span>
+
+        <button
+          @click="() => handleMoveToList(todo)"
+          class="h-8 px-2 text-[15px] text-center text-[#0080FF] ring-1 ring-[#AAAAAA] bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          type="button"
+        >
+          Move to List
+        </button>
+      </div>
+    </transition-group>
   </div>
   <p v-else class="text-[15px]">No backlog items found.</p>
   <AddForm></AddForm>
