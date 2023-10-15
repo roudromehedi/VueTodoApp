@@ -41,12 +41,10 @@ export const useTodos = defineStore("todos", {
     removeTodo(id: number) {
       const index = this.todos.findIndex((todo) => todo.id == id);
       this.todos.splice(index, 1);
-      console.log(id, "is deleted");
     },
     addToBacklog(todo: Todo) {
       this.backlog.push(todo);
       this.removeTodo(todo.id);
-      console.log(this.todos, "current todos");
     },
     removeBacklog(id: number) {
       this.backlog = this.backlog.filter((todo) => todo.id !== id);

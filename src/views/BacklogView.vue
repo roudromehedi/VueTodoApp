@@ -61,7 +61,7 @@
         </span>
 
         <button
-          @click="() => handleMoveToList(todo)"
+          @click="handleMoveToList(todo)"
           class="h-8 px-2 text-[15px] text-center text-[#0080FF] ring-1 ring-[#AAAAAA] bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
           type="button"
         >
